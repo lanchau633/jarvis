@@ -15,7 +15,10 @@ setuptools<81
 sounddevice==0.4.7
 pytesseract==0.3.13
 Pillow==10.4.0
-webrtcvad==2.0.10
+# webrtcvad has no prebuilt Windows wheel and needs MSVC Build Tools to
+# compile from source; webrtcvad-wheels is a drop-in binary fork (same
+# `import webrtcvad` API) that ships prebuilt wheels instead.
+webrtcvad-wheels==2.0.14
 rapidfuzz==3.6.1
 pynput>=1.7.6
 geoip2==4.8.0

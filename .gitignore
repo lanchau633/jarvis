@@ -24,6 +24,9 @@ vault/
 *.wav
 !**/samples/*.wav
 
+# Claude Code local state
+.claude/
+
 # OS / editor
 .DS_Store
 Thumbs.db
