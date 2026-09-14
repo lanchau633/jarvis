@@ -1237,6 +1237,7 @@ class VoiceListener(threading.Thread):
         # reply engine.
         try:
             reply = self.agent.run(query)
+            print(f"\n  💬 Reply: {reply}", flush=True)
         except Exception as e:
             # Log the error visibly - this should never happen silently
             print(f"\n  ❌ Agent error: {e}", flush=True)

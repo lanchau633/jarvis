@@ -8,6 +8,14 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
+if sys.platform == "win32":
+    # listener.py prints emoji; daemon.py normally reconfigures stdout to
+    # UTF-8 for this, but this script calls the listener directly.
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
 from agent.dummy import EchoAgent
 from voice.core.listening.listener import VoiceListener
 
