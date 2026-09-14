@@ -1,0 +1,30 @@
+# Reference/vendor repos (cloned for reading, not part of our history)
+reference/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Env / secrets
+.env
+.env.*
+
+# Obsidian vault (personal data — don't commit notes by default)
+vault/
+
+# Models / audio artifacts
+*.onnx
+*.ggml
+*.bin
+*.wav
+!**/samples/*.wav
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
