@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JARVIS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="speedlines"></div>
+
+<div class="wrap">
+  <header class="head">
+    <div class="wordmark">JARVIS</div>
+    <div class="time mono" id="clock">--:--:--</div>
+  </header>
+
+  <section class="pods">
+
+    <article class="pod pod-chat">
+      <div class="pod-title">Messaging</div>
+      <div class="chat-log" id="chatLog"></div>
+      <div class="status-line mono" id="statusLine"></div>
+      <div class="input-row">
+        <input id="chatInput" class="mono" placeholder="Type a message…" autocomplete="off">
+        <button id="sendBtn">SEND</button>
+      </div>
+    </article>
+
+    <article class="pod pod-stub" data-pod="mic">
+      <div class="pod-title">Mic</div>
+      <div class="stub-body">
+        <div class="stub-icon">●</div>
+        <p>Push-to-talk voice input.</p>
+        <span class="badge">MILESTONE 2</span>
+      </div>
+    </article>
+
+    <article class="pod pod-stub" data-pod="calendar">
+      <div class="pod-title">Calendar / To-Do</div>
+      <div class="stub-body">
+        <div class="stub-icon">▦</div>
+        <p>Google Calendar beside a task list.</p>
+        <span class="badge">MILESTONE 4</span>
+      </div>
+    </article>
+
+    <article class="pod pod-stub" data-pod="email">
+      <div class="pod-title">Email</div>
+      <div class="stub-body">
+        <div class="stub-icon">✉</div>
+        <p>Read, draft, and bin by relevance.</p>
+        <span class="badge">MILESTONE 5</span>
+      </div>
+    </article>
+
+    <article class="pod pod-stub" data-pod="digest">
+      <div class="pod-title">Daily Digest</div>
+      <div class="stub-body">
+        <div class="stub-icon">☀</div>
+        <p>Weather, agenda, and mail summary.</p>
+        <span class="badge">MILESTONE 6</span>
+      </div>
+    </article>
+
+  </section>
+</div>
+
+<script src="qrc:///qtwebchannel/qwebchannel.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

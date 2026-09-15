@@ -1,6 +1,16 @@
-# Voice loop deps, trimmed from reference/jarvis-voice/requirements.txt.
-# Excludes desktop_app-only (PyQt6*, pyinstaller, psutil) and dev/test-only
-# (pytest*) packages, since we run the daemon headless with no tray UI.
+# Voice deps derived from reference/jarvis-voice/requirements.txt, plus the
+# PyQt6 desktop shell. Excludes isair's tray app extras (pyinstaller, psutil)
+# and dev/test-only (pytest*) packages.
+
+# The OpenJarvis agent runtime is NOT listed here: it installs from the
+# gitignored reference clone, which a fresh checkout won't have. After
+# cloning it into reference/openjarvis, run:
+#     .conda-env/python.exe -m pip install ./reference/openjarvis
+
+# Desktop shell: QtWebEngine renders the pod UI, QWebChannel bridges it to
+# Python in-process (no local web server, so no open port).
+PyQt6>=6.6.0
+PyQt6-WebEngine>=6.6.0
 
 python-dotenv==1.0.1
 flask>=3.0.0

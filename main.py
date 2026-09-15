@@ -1,17 +1,27 @@
-"""JARVIS entry point — Milestone 1 echo skeleton.
+"""JARVIS entry point.
 
-Wires isair/jarvis's voice loop (vendored in voice/core) to our own agent
-runtime (agent/) instead of isair's own reply engine. Swap the agent
-constructed below to move to Milestone 2 (real OpenJarvis agent) without
-touching the voice loop.
+Launches the desktop shell. `--voice` runs the legacy headless voice daemon
+instead, which the mic pod will fold into the shell in Milestone 2.
 """
 
 import sys
 
-from agent.dummy import EchoAgent
-from voice.core.daemon import main as run_daemon
+from agent.openjarvis_agent import OpenJarvisAgent
+
+
+def build_agent():
+    # Consumers depend only on the agent/base.py interface, so swapping this
+    # for agent.dummy.EchoAgent isolates UI/voice problems from model ones.
+    return OpenJarvisAgent()
 
 
 if __name__ == "__main__":
-    smoke_test = "--smoke-test" in set(sys.argv[1:])
-    run_daemon(smoke_test=smoke_test, agent=EchoAgent())
+    args = set(sys.argv[1:])
+    agent = build_agent()
+
+    if "--voice" in args:
+        from voice.core.daemon import main as run_daemon
+        run_daemon(smoke_test="--smoke-test" in args, agent=agent)
+    else:
+        from app.shell import run
+        sys.exit(run(agent))
