@@ -7,13 +7,14 @@ instead, which the mic pod will fold into the shell in Milestone 2.
 import sys
 
 from agent.gemini_agent import GeminiAgent
+from memory.vault import build_system_prompt
 
 
 def build_agent():
     # Consumers depend only on the agent/base.py interface, so swapping this
     # for OpenJarvisAgent (local Ollama) or EchoAgent isolates UI problems
     # from model ones.
-    return GeminiAgent()
+    return GeminiAgent(system_prompt=build_system_prompt())
 
 
 if __name__ == "__main__":
