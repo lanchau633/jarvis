@@ -6,13 +6,14 @@ instead, which the mic pod will fold into the shell in Milestone 2.
 
 import sys
 
-from agent.openjarvis_agent import OpenJarvisAgent
+from agent.gemini_agent import GeminiAgent
 
 
 def build_agent():
     # Consumers depend only on the agent/base.py interface, so swapping this
-    # for agent.dummy.EchoAgent isolates UI/voice problems from model ones.
-    return OpenJarvisAgent()
+    # for OpenJarvisAgent (local Ollama) or EchoAgent isolates UI problems
+    # from model ones.
+    return GeminiAgent()
 
 
 if __name__ == "__main__":
